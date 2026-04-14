@@ -3,38 +3,830 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samuel Barber | Reserva tu Cita</title>
+  <title>Samuel Barber | Estilo & Precisión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    /* Estilos base rápidos para mantener la legibilidad. 
-       Puedes reemplazarlos por tu CSS personalizado o framework */
-    :root { --primary: #1a1a1a; --accent: #c5a059; --bg: #f8f9fa; --text: #333; }
-    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; color: var(--text); background: var(--bg); line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    header { background: var(--primary); color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
-    nav ul li a:hover { color: var(--accent); }
-    section { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
-    h1, h2 { text-align: center; margin-bottom: 1rem; }
-    .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80'); background-size: cover; background-position: center; color: #fff; text-align: center; padding: 6rem 5%; border-radius: 0; }
-    .btn { display: inline-block; background: var(--accent); color: #fff; padding: 0.8rem 1.5rem; border-radius: 4px; font-weight: bold; margin-top: 1rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .card { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; margin-bottom: 1rem; }
-    .price { color: var(--accent); font-weight: bold; }
-    form { background: #fff; padding: 2rem; border-radius: 8px; max-width: 600px; margin: 2rem auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    label { display: block; margin-top: 1rem; font-weight: 500; }
-    input, select, textarea { width: 100%; padding: 0.6rem; margin-top: 0.3rem; border: 1px solid #ccc; border-radius: 4px; }
-    .faq-item { background: #fff; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px; border-left: 3px solid var(--accent); }
-    footer { background: var(--primary); color: #aaa; text-align: center; padding: 2rem; margin-top: 2rem; }
-    @media (max-width: 768px) { nav ul { display: none; } }
+    :root {
+      --primary: #0a0a0a;
+      --secondary: #1a1a1a;
+      --accent: #c5a059;
+      --accent-light: #d4af37;
+      --text: #e0e0e0;
+      --text-muted: #888;
+      --white: #ffffff;
+      --gradient-gold: linear-gradient(135deg, #c5a059 0%, #f4e5c2 50%, #c5a059 100%);
+      --shadow-soft: 0 10px 40px rgba(0,0,0,0.3);
+      --shadow-card: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    /* Header Mejorado */
+    header {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--accent);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--accent);
+      -webkit-text-fill-color: var(--accent);
+      font-size: 1.8rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section Mejorado */
+    .hero {
+      margin-top: 80px;
+      background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(26,26,26,0.8) 100%), 
+                  url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--white);
+      text-align: center;
+      padding: 10rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c5a059' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      color: var(--text);
+      font-weight: 300;
+      animation: fadeInUp 1s ease 0.2s backwards;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gradient-gold);
+      color: var(--primary);
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3);
+      border: 2px solid transparent;
+      animation: fadeInUp 1s ease 0.4s backwards;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(197, 160, 89, 0.5);
+      background: transparent;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Secciones Generales */
+    section {
+      padding: 6rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--gradient-gold);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin: 3rem auto 4rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* Features Grid Mejorado */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-card);
+      border-color: var(--accent);
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Servicios Grid Mejorado */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--secondary);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(197, 160, 89, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.9) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border-color: var(--accent);
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-image {
+      transform: scale(1.1);
+    }
+
+    .service-content {
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-badge {
+      display: inline-block;
+      background: var(--gradient-gold);
+      color: var(--primary);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .service-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      color: var(--white);
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .service-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(197, 160, 89, 0.2);
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .price span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Formulario Mejorado */
+    .booking-section {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      border-radius: 20px;
+      padding: 4rem;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.2rem;
+      background: var(--gradient-gold);
+      color: var(--primary);
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
+    }
+
+    .form-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Info Cards */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, rgba(197, 160, 89, 0.1) 0%, rgba(197, 160, 89, 0.05) 100%);
+      padding: 2.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-card);
+    }
+
+    .info-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .info-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Testimonios */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--secondary);
+      padding: 2.5rem;
+      border-radius: 15px;
+      border-left: 4px solid var(--accent);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateX(10px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-size: 5rem;
+      color: var(--accent);
+      opacity: 0.2;
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+
+    .faq-item {
+      background: var(--secondary);
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(197, 160, 89, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--white);
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: rgba(197, 160, 89, 0.1);
+    }
+
+    .faq-question i {
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      max-height: 200px;
+    }
+
+    /* Footer Mejorado */
+    footer {
+      background: var(--secondary);
+      padding: 4rem 5% 2rem;
+      margin-top: 6rem;
+      border-top: 3px solid var(--accent);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section h3 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: var(--text-muted);
+      text-decoration: none;
+      line-height: 1.8;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: rgba(197, 160, 89, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(197, 160, 89, 0.2);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(10, 10, 10, 0.98);
+        transition: left 0.3s ease;
+      }
+
+      nav.active {
+        left: 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .booking-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .services-grid,
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-light);
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="#" style="font-size: 1.5rem; font-weight: bold; letter-spacing: 2px;">SAMUEL BARBER</a>
-    <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">☰</button>
-    <nav>
+    <a href="#" class="logo">
+      <i class="fas fa-cut"></i>
+      SAMUEL BARBER
+    </a>
+    <button class="mobile-menu-btn" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="navbar">
       <ul>
         <li><a href="#experiencia">El Espacio</a></li>
         <li><a href="#servicios">Servicios</a></li>
@@ -46,200 +838,253 @@
   </header>
 
   <section class="hero">
-    <h1>Donde cada detalle define tu estilo</h1>
-    <p>Cortes de precisión, ambiente relajado y un servicio que te hace sentir en casa. Completa el formulario y confirma tu cita al instante.</p>
-    <a href="#reservar" class="btn">Reservar Ahora</a>
+    <div class="hero-content">
+      <h1>Donde cada detalle define tu estilo</h1>
+      <p>Cortes de precisión, ambiente relajado y un servicio que te hace sentir en casa. Completa el formulario y confirma tu cita al instante.</p>
+      <a href="#reservar" class="btn">Reservar Ahora</a>
+    </div>
   </section>
 
-  <section id="experiencia">
-    <h2>Diseñado para tu Estilo</h2>
-    <p style="text-align:center; max-width: 800px; margin: 0 auto 2rem;">Creemos que el cuidado personal debe acompañarse de un entorno donde el tiempo se detiene. Cada rincón de Samuel Barber está pensado para tu confort.</p>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); text-align:center;">
-      <div class="card">
+  <section id="experiencia" class="fade-in">
+    <h2 class="section-title">Diseñado para tu Estilo</h2>
+    <p class="section-subtitle">Creemos que el cuidado personal debe acompañarse de un entorno donde el tiempo se detiene. Cada rincón de Samuel Barber está pensado para tu confort.</p>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-couch"></i>
+        </div>
         <h3>Ambiente Relajante</h3>
-        <p>Música cuidadosamente seleccionada, sillones ergonómicos y climatización ideal.</p>
+        <p>Música cuidadosamente seleccionada, sillones ergonómicos y climatización ideal para tu máxima comodidad.</p>
       </div>
-      <div class="card">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-user-tie"></i>
+        </div>
         <h3>Atención Personalizada</h3>
-        <p>Desde que reservas hasta que te marchas, nuestros barberos se adaptan a tu estilo.</p>
+        <p>Desde que reservas hasta que te marchas, nuestros barberos se adaptan a tu estilo y preferencias únicas.</p>
       </div>
-      <div class="card">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-tags"></i>
+        </div>
         <h3>Precios Claros</h3>
-        <p>Servicios de calidad profesional a tarifas justas. Sin sorpresas ni costos ocultos.</p>
+        <p>Servicios de calidad profesional a tarifas justas. Sin sorpresas ni costos ocultos. Transparencia total.</p>
       </div>
-      <div class="card">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
         <h3>Ubicación Privilegiada</h3>
-        <p>Calle Maximiliano Ramos #424. Corazón histórico de Camagüey.</p>
+        <p>Calle Maximiliano Ramos #424. Corazón histórico de Camagüey, fácil acceso y estacionamiento disponible.</p>
       </div>
     </div>
   </section>
 
-  <section id="servicios">
-    <h2>Servicios en tu Silla</h2>
-    <p style="text-align:center; max-width: 800px; margin: 0 auto 2rem;">No solo cortamos cabello. Creamos experiencias de grooming donde cada técnica tiene un propósito.</p>
-    <div class="grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Corte Clásico">
-        <h3>Corte Clásico & Estilo</h3>
-        <p>Tijera y máquina, acabado a navaja, lavado incluido.</p>
-        <p><span class="price">Desde 8 USD</span> | Corte Preciso</p>
+  <section id="servicios" class="fade-in">
+    <h2 class="section-title">Servicios en tu Silla</h2>
+    <p class="section-subtitle">No solo cortamos cabello. Creamos experiencias de grooming donde cada técnica tiene un propósito y cada detalle cuenta.</p>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Corte Clásico" class="service-image">
+        <div class="service-content">
+          <span class="service-badge">Más Popular</span>
+          <h3>Corte Clásico & Estilo</h3>
+          <p>Tijera y máquina, acabado a navaja, lavado incluido y styling profesional.</p>
+          <div class="service-footer">
+            <div class="price">8 USD <span>/ desde</span></div>
+            <i class="fas fa-cut" style="color: var(--accent);"></i>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Afeitado Tradicional">
-        <h3>Afeitado Tradicional</h3>
-        <p>Toalla caliente, aceites esenciales y navaja de precisión.</p>
-        <p><span class="price">Desde 10 USD</span> | Experiencia Premium</p>
+
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Afeitado Tradicional" class="service-image">
+        <div class="service-content">
+          <span class="service-badge">Premium</span>
+          <h3>Afeitado Tradicional</h3>
+          <p>Toalla caliente, aceites esenciales, navaja de precisión y aftershave premium.</p>
+          <div class="service-footer">
+            <div class="price">10 USD <span>/ desde</span></div>
+            <i class="fas fa-soap" style="color: var(--accent);"></i>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Arreglo de Barba">
-        <h3>Arreglo de Barba</h3>
-        <p>Perfilado, hidratación y modelado según tu tipo de vello.</p>
-        <p><span class="price">Desde 7 USD</span> | Cuidado Masculino</p>
+
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Arreglo de Barba" class="service-image">
+        <div class="service-content">
+          <span class="service-badge">Esencial</span>
+          <h3>Arreglo de Barba</h3>
+          <p>Perfilado, hidratación profunda y modelado según tu tipo de vello y rostro.</p>
+          <div class="service-footer">
+            <div class="price">7 USD <span>/ desde</span></div>
+            <i class="fas fa-user" style="color: var(--accent);"></i>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Tratamiento Capilar">
-        <h3>Tratamiento Capilar</h3>
-        <p>Exfoliación, masaje craneal y mascarilla revitalizante.</p>
-        <p><span class="price">Desde 12 USD</span> | Bienestar Total</p>
+
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Tratamiento Capilar" class="service-image">
+        <div class="service-content">
+          <span class="service-badge">Bienestar</span>
+          <h3>Tratamiento Capilar</h3>
+          <p>Exfoliación, masaje craneal terapéutico y mascarilla revitalizante profunda.</p>
+          <div class="service-footer">
+            <div class="price">12 USD <span>/ desde</span></div>
+            <i class="fas fa-spa" style="color: var(--accent);"></i>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Combo Samuel">
-        <h3>Combo Samuel</h3>
-        <p>Corte + Arreglo de barba + Bebida de cortesía.</p>
-        <p><span class="price">Desde 15 USD</span> | El Favorito</p>
+
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=600&q=80" alt="Combo Samuel" class="service-image">
+        <div class="service-content">
+          <span class="service-badge">Recomendado</span>
+          <h3>Combo Samuel</h3>
+          <p>Corte + Arreglo de barba + Bebida de cortesía. La experiencia completa.</p>
+          <div class="service-footer">
+            <div class="price">15 USD <span>/ desde</span></div>
+            <i class="fas fa-glass-whiskey" style="color: var(--accent);"></i>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=600&q=80" alt="Diseño & Acabados">
-        <h3>Diseño de Cejas & Acabados</h3>
-        <p>Retoque fino, limpieza de cuello y productos de fijación.</p>
-        <p><span class="price">Desde 5 USD</span> | Detalle Final</p>
+
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Diseño & Acabados" class="service-image">
+        <div class="service-content">
+          <span class="service-badge">Detalle</span>
+          <h3>Diseño de Cejas & Acabados</h3>
+          <p>Retoque fino, limpieza de cuello, cejas y productos de fijación profesional.</p>
+          <div class="service-footer">
+            <div class="price">5 USD <span>/ desde</span></div>
+            <i class="fas fa-magic" style="color: var(--accent);"></i>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="reservar">
-    <h2>Reserva tu Cita</h2>
-    <p style="text-align:center;">Completa el formulario. Al enviarlo, se abrirá WhatsApp con tu solicitud lista. Nosotros confirmaremos disponibilidad en minutos.</p>
-    <form id="bookingForm">
-      <label>Nombre completo *</label>
-      <input type="text" name="nombre" required placeholder="Ej: Juan Pérez">
-      
-      <label>Teléfono de contacto *</label>
-      <input type="tel" name="telefono" required placeholder="Ej: +53 5555 1234">
-      
-      <label>Fecha de visita *</label>
-      <input type="date" name="fecha" required>
-      
-      <label>Hora preferida *</label>
-      <select name="hora" required>
-        <option value="">Selecciona hora</option>
-        <option value="09:00">9:00 AM</option>
-        <option value="10:00">10:00 AM</option>
-        <option value="11:00">11:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="13:00">1:00 PM</option>
-        <option value="14:00">2:00 PM</option>
-        <option value="15:00">3:00 PM</option>
-        <option value="16:00">4:00 PM</option>
-        <option value="17:00">5:00 PM</option>
-        <option value="18:00">6:00 PM</option>
-        <option value="19:00">7:00 PM</option>
-      </select>
-      
-      <label>Servicio deseado *</label>
-      <select name="servicio" required>
-        <option value="">Selecciona servicio</option>
-        <option value="corte">Corte Clásico & Estilo</option>
-        <option value="afeitado">Afeitado Tradicional</option>
-        <option value="barba">Arreglo de Barba</option>
-        <option value="tratamiento">Tratamiento Capilar</option>
-        <option value="combo">Combo Samuel</option>
-        <option value="otro">Otro / Consulta</option>
-      </select>
-      
-      <label>Notas o requerimientos especiales</label>
-      <textarea name="notas" rows="3" placeholder="Alergias, preferencia de barbero, etc."></textarea>
-      
-      <button type="submit" class="btn" style="width:100%; border:none; cursor:pointer; margin-top:1.5rem;">Enviar Solicitud por WhatsApp</button>
-    </form>
-    <p style="text-align:center; font-size: 0.9rem; color: #666;">🔒 Tus datos se usan solo para gestionar tu cita. Te responderemos confirmando disponibilidad.</p>
-  </section>
-
-  <section id="pagos">
-    <h2>Información Útil</h2>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); text-align:center;">
-      <div class="card">
-        <h3>🕒 Horario de Atención</h3>
-        <p>Martes a Domingo: 9:00 AM - 8:00 PM<br>Lunes: Cerrado</p>
-      </div>
-      <div class="card">
-        <h3>💳 Métodos de Pago</h3>
-        <p>Aceptamos CUP, USD, Transfermóvil, EnZona y tarjetas internacionales. Precios sujetos a tasa del día.</p>
-      </div>
+  <section id="reservar" class="fade-in">
+    <h2 class="section-title">Reserva tu Cita</h2>
+    <p class="section-subtitle">Completa el formulario. Al enviarlo, se abrirá WhatsApp con tu solicitud lista. Nosotros confirmaremos disponibilidad en minutos.</p>
+    
+    <div class="booking-section">
+      <form id="bookingForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+          </div>
+          
+          <div class="form-group">
+            <label for="telefono">Teléfono de contacto *</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +53 5555 1234">
+          </div>
+          
+          <div class="form-group">
+            <label for="fecha">Fecha de visita *</label>
+            <input type="date" id="fecha" name="fecha" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="hora">Hora preferida *</label>
+            <select id="hora" name="hora" required>
+              <option value="">Selecciona hora</option>
+              <option value="09:00">9:00 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="16:00">4:00 PM</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="19:00">7:00 PM</option>
+            </select>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="servicio">Servicio deseado *</label>
+            <select id="servicio" name="servicio" required>
+              <option value="">Selecciona servicio</option>
+              <option value="Corte Clásico & Estilo">Corte Clásico & Estilo</option>
+              <option value="Afeitado Tradicional">Afeitado Tradicional</option>
+              <option value="Arreglo de Barba">Arreglo de Barba</option>
+              <option value="Tratamiento Capilar">Tratamiento Capilar</option>
+              <option value="Combo Samuel">Combo Samuel</option>
+              <option value="Diseño de Cejas & Acabados">Diseño de Cejas & Acabados</option>
+              <option value="Otro / Consulta">Otro / Consulta</option>
+            </select>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="notas">Notas o requerimientos especiales</label>
+            <textarea id="notas" name="notas" placeholder="Alergias, preferencia de barbero, estilo específico, etc."></textarea>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          <i class="fab fa-whatsapp"></i> Enviar Solicitud por WhatsApp
+        </button>
+        
+        <p class="form-note">
+          <i class="fas fa-lock"></i>
+          Tus datos se usan solo para gestionar tu cita. Te responderemos confirmando disponibilidad.
+        </p>
+      </form>
     </div>
   </section>
 
-  <section id="testimonios">
-    <h2>Lo que Dicen Nuestros Clientes</h2>
-    <div class="grid">
-      <div class="card" style="text-align:center; font-style: italic;">
-        <p>"No es solo un corte, es una experiencia de relajación. El trato fue impecable y el acabado perfecto."</p>
-        <p><strong>— Laura M.</strong></p>
+  <section id="pagos" class="fade-in">
+    <h2 class="section-title">Información Útil</h2>
+    <p class="section-subtitle">Todo lo que necesitas saber antes de visitarnos para una experiencia sin complicaciones.</p>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Horario de Atención</h3>
+        <p><strong>Martes a Domingo:</strong><br>9:00 AM - 8:00 PM</p>
+        <p><strong>Lunes:</strong><br>Cerrado</p>
       </div>
-      <div class="card" style="text-align:center; font-style: italic;">
-        <p>"Reservé por WhatsApp en 3 minutos. Me asesoraron sobre el estilo que mejor me queda. Eso es profesionalismo."</p>
-        <p><strong>— Carlos R.</strong></p>
-      </div>
-      <div class="card" style="text-align:center; font-style: italic;">
-        <p>"Vengo cada mes para el afeitado tradicional. Ambiente clásico, buen precio y pago fácil por Transfermóvil."</p>
-        <p><strong>— Javier & Luis</strong></p>
+      
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-credit-card"></i>
+        </div>
+        <h3>Métodos de Pago</h3>
+        <p>Aceptamos CUP, USD, Transfermóvil, EnZona y tarjetas internacionales.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Precios sujetos a tasa del día</p>
       </div>
     </div>
   </section>
 
-  <section id="faq">
-    <h2>Preguntas Frecuentes</h2>
-    <div class="faq-item">
-      <strong>¿Cuáles son los horarios?</strong>
-      <p>Abrimos de martes a domingo de 9:00 AM a 8:00 PM. Los lunes cerramos para mantenimiento, limpieza profunda y descanso del equipo.</p>
-    </div>
-    <div class="faq-item">
-      <strong>¿Qué métodos de pago aceptan?</strong>
-      <p>Aceptamos CUP, USD, Transfermóvil, EnZona y tarjetas internacionales. Sin complicaciones.</p>
-    </div>
-    <div class="faq-item">
-      <strong>¿Trabajan solo con cita previa o aceptan visitas sin reserva?</strong>
-      <p>Recomendamos reservar para garantizar tu hora, pero aceptamos walk-ins si hay disponibilidad en el momento.</p>
-    </div>
-    <div class="faq-item">
-      <strong>¿Cómo confirmo mi reserva?</strong>
-      <p>Envías el formulario, WhatsApp abrirá automáticamente con tu solicitud. Te responderemos en minutos confirmando disponibilidad y detalles.</p>
+  <section id="testimonios" class="fade-in">
+    <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
+    <p class="section-subtitle">Experiencias reales de quienes ya han confiado en nosotros para su imagen personal.</p>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p>"No es solo un corte, es una experiencia de relajación. El trato fue impecable y el acabado perfecto. Ya soy cliente fijo."</p>
+        <div class="testimonial-author">— Laura M.</div>
+      </div>
+      
+      <div class="testimonial-card">
+        <p>"Reservé por WhatsApp en 3 minutos. Me asesoraron sobre el estilo que mejor me queda. Eso es profesionalismo y atención al detalle."</p>
+        <div class="testimonial-author">— Carlos R.</div>
+      </div>
+      
+      <div class="testimonial-card">
+        <p>"Vengo cada mes para el afeitado tradicional. Ambiente clásico, buen precio y pago fácil por Transfermóvil. Altamente recomendado."</p>
+        <div class="testimonial-author">— Javier & Luis</div>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p>© <strong>Samuel Barber</strong>. Todos los derechos reservados.</p>
-    <p>Creado por <a href="https://pedrito-tech.vercel.app/" style="color: var(--accent);">PedritoTech</a></p>
-  </footer>
-
-  <script>
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const nombre = form.nombre.value;
-      const telefono = form.telefono.value;
-      const fecha = form.fecha.value;
-      const hora = form.hora.value;
-      const servicio = form.servicio.value;
-      const notas = form.notas.value;
-      
-      const mensaje = `🪒 *NUEVA CITA - SAMUEL BARBER*%0A%0A👤 Nombre: ${nombre}%0A📱 Teléfono: ${telefono}%0A📅 Fecha: ${fecha}%0A⏰ Hora: ${hora}%0A✂️ Servicio: ${servicio}%0A📝 Notas: ${notas || 'Ninguna'}`;
-      
-      // Reemplaza el número con el WhatsApp real del negocio (formato internacional sin + ni espacios)
-      const whatsappNumber = '5350000000'; 
-      window.open(`https://wa.me/${whatsappNumber}?text=${mensaje}`, '_blank');
-    });
-  </script>
-
-</body>
-</html>
+  <section id="faq" class="fade-in">
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <p class="
