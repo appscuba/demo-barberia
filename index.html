@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samuel Barber | Estilo & Precisión</title>
+  <title>Samuel Barber | Estilo & Confort</title>
   <!-- Fuentes Premium -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,13 +15,12 @@
     :root {
       --primary: #0a0a0a;
       --secondary: #141414;
-      --accent: #c5a059;
+      --accent: #c5a059; /* Dorado */
       --accent-hover: #d4af37;
       --text: #e0e0e0;
       --text-muted: #a0a0a0;
       --white: #ffffff;
       --gradient-gold: linear-gradient(135deg, #c5a059 0%, #f4e5c2 50%, #c5a059 100%);
-      --shadow-card: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,7 +49,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.3s ease;
     }
 
     .logo {
@@ -90,7 +88,6 @@
       justify-content: center;
       text-align: center;
       padding: 0 20px;
-      margin-top: 0;
     }
 
     .hero-content h1 {
@@ -125,7 +122,7 @@
     .section-header h2 { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
     .section-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-    /* --- GRID CARDS --- */
+    /* --- GRID CARDS (Cortes) --- */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -138,25 +135,42 @@
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s, border-color 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     .card:hover { transform: translateY(-5px); border-color: var(--accent); }
 
     .card img { width: 100%; height: 220px; object-fit: cover; }
     
-    .card-content { padding: 1.5rem; }
+    .card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
     .card-title { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--white); }
-    .card-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; }
+    .card-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; flex-grow: 1; }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1rem;
+    }
     .card-price { color: var(--accent); font-weight: 700; font-size: 1.2rem; font-family: 'Playfair Display', serif; }
 
-    /* --- FEATURES (Iconos) --- */
+    /* --- CONFORT & ATENCION (Features) --- */
     .feature-box {
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem;
       background: var(--secondary);
       border-radius: 12px;
       border: 1px solid rgba(197, 160, 89, 0.1);
+      transition: all 0.3s ease;
     }
-    .feature-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+    .feature-box:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+    .feature-icon { font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; }
+    .feature-box h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+    .feature-box p { color: var(--text-muted); }
 
     /* --- FORMULARIO --- */
     .booking-wrapper {
@@ -253,8 +267,7 @@
     <nav>
       <ul id="nav-list">
         <li><a href="#experiencia">El Espacio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#pagos">Info & Pagos</a></li>
+        <li><a href="#servicios">Cortes</a></li>
         <li><a href="#reservar">Reservar</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -270,93 +283,112 @@
     </div>
   </section>
 
-  <!-- Experiencia (Features) -->
+  <!-- Experiencia: Confort y Atención -->
   <section id="experiencia">
     <div class="section-header">
-      <h2>Diseñado para tu Estilo</h2>
-      <p>Cada rincón de Samuel Barber está pensado para tu confort y tu imagen.</p>
+      <h2>Más que un Corte, una Experiencia</h2>
+      <p>En Samuel Barber, nos enfocamos en dos pilares fundamentales: tu comodidad y nuestra dedicación.</p>
     </div>
     <div class="grid-container">
       <div class="feature-box">
         <i class="fas fa-couch feature-icon"></i>
-        <h3>Ambiente Relax</h3>
-        <p>Música seleccionada, sillones ergonómicos y climatización ideal.</p>
+        <h3>Confort Absoluto</h3>
+        <p>Disfruta de nuestros sillones reclinables de cuero, aire acondicionado climatizado, música ambiente seleccionada y bebidas de cortesía. Un espacio donde el tiempo se detiene.</p>
       </div>
       <div class="feature-box">
         <i class="fas fa-user-tie feature-icon"></i>
-        <h3>Atención Pro</h3>
-        <p>Asesoramiento personalizado para encontrar tu mejor look.</p>
-      </div>
-      <div class="feature-box">
-        <i class="fas fa-map-marker-alt feature-icon"></i>
-        <h3>Ubicación Top</h3>
-        <p>Calle Maximiliano Ramos #424, Camagüey.</p>
+        <h3>Atención Excepcional</h3>
+        <p>Nuestros barberos no solo cortan cabello; escuchan, asesoran y cuidan cada detalle. Nos tomamos el tiempo necesario para asegurar que salgas sintiéndote renovado.</p>
       </div>
     </div>
   </section>
 
-  <!-- Servicios -->
+  <!-- Servicios: 6 Tipos de Cortes -->
   <section id="servicios">
     <div class="section-header">
-      <h2>Nuestros Servicios</h2>
-      <p>Experiencias de grooming donde cada técnica tiene un propósito.</p>
+      <h2>Nuestros Estilos</h2>
+      <p>Domina las tendencias con nuestros 6 servicios signature.</p>
     </div>
     <div class="grid-container">
-      <!-- Servicio 1 -->
+      
+      <!-- Corte 1 -->
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Corte Clásico">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Fade Clásico">
         <div class="card-content">
-          <h3 class="card-title">Corte Clásico & Estilo</h3>
-          <p class="card-desc">Tijera y máquina, acabado a navaja y lavado incluido.</p>
-          <div class="card-price">Desde 8 USD</div>
+          <h3 class="card-title">Skin Fade Clásico</h3>
+          <p class="card-desc">Degradado perfecto desde cero, transiciones impecables y acabado a navaja.</p>
+          <div class="card-footer">
+            <span class="card-price">10 USD</span>
+            <i class="fas fa-star" style="color:var(--accent)"></i>
+          </div>
         </div>
       </div>
-      <!-- Servicio 2 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Afeitado">
-        <div class="card-content">
-          <h3 class="card-title">Afeitado Tradicional</h3>
-          <p class="card-desc">Toalla caliente, aceites esenciales y navaja de precisión.</p>
-          <div class="card-price">Desde 10 USD</div>
-        </div>
-      </div>
-      <!-- Servicio 3 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Barba">
-        <div class="card-content">
-          <h3 class="card-title">Arreglo de Barba</h3>
-          <p class="card-desc">Perfilado, hidratación y modelado según tu rostro.</p>
-          <div class="card-price">Desde 7 USD</div>
-        </div>
-      </div>
-       <!-- Servicio 4 -->
-       <div class="card">
-        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=600&q=80" alt="Combo">
-        <div class="card-content">
-          <h3 class="card-title">Combo Samuel</h3>
-          <p class="card-desc">Corte + Barba + Bebida de cortesía. La experiencia completa.</p>
-          <div class="card-price">Desde 15 USD</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Info & Pagos -->
-  <section id="pagos" style="background: var(--secondary);">
-    <div class="section-header">
-      <h2>Información Útil</h2>
-    </div>
-    <div class="grid-container" style="text-align: center;">
-      <div>
-        <i class="fas fa-clock feature-icon"></i>
-        <h3>Horarios</h3>
-        <p>Mar - Dom: 9:00 AM - 8:00 PM<br>Lunes: Cerrado</p>
+      <!-- Corte 2 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Texturizado">
+        <div class="card-content">
+          <h3 class="card-title">Corte Texturizado</h3>
+          <p class="card-desc">Estilo moderno con tijera, movimiento natural y productos mate para el finish.</p>
+          <div class="card-footer">
+            <span class="card-price">12 USD</span>
+            <i class="fas fa-cut" style="color:var(--accent)"></i>
+          </div>
+        </div>
       </div>
-      <div>
-        <i class="fas fa-credit-card feature-icon"></i>
-        <h3>Pagos</h3>
-        <p>CUP, USD, Transfermóvil, EnZona y Tarjetas.</p>
+
+      <!-- Corte 3 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Barba Completa">
+        <div class="card-content">
+          <h3 class="card-title">Ritual de Barba</h3>
+          <p class="card-desc">Perfilado, recorte, toalla caliente, aceites esenciales y masaje facial.</p>
+          <div class="card-footer">
+            <span class="card-price">8 USD</span>
+            <i class="fas fa-beard" style="color:var(--accent)"></i>
+          </div>
+        </div>
       </div>
+
+      <!-- Corte 4 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1593702295094-aea8c5c13d7b?w=600&q=80" alt="Combo Completo">
+        <div class="card-content">
+          <h3 class="card-title">The Samuel Combo</h3>
+          <p class="card-desc">La experiencia completa: Corte de cabello + Arreglo de barba + Bebida.</p>
+          <div class="card-footer">
+            <span class="card-price">18 USD</span>
+            <i class="fas fa-crown" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corte 5 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Afeitado Tradicional">
+        <div class="card-content">
+          <h3 class="card-title">Afeitado Old School</h3>
+          <p class="card-desc">Afeitado tradicional a navaja con espuma caliente y aftershave premium.</p>
+          <div class="card-footer">
+            <span class="card-price">10 USD</span>
+            <i class="fas fa-soap" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corte 6 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=600&q=80" alt="Diseño y Cejas">
+        <div class="card-content">
+          <h3 class="card-title">Diseño & Cejas</h3>
+          <p class="card-desc">Limpieza de cejas con hilo/cera, diseño de líneas laterales y ribete preciso.</p>
+          <div class="card-footer">
+            <span class="card-price">5 USD</span>
+            <i class="fas fa-magic" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -364,7 +396,7 @@
   <section id="reservar">
     <div class="section-header">
       <h2>Reserva tu Cita</h2>
-      <p>Completa el formulario y confirma vía WhatsApp al instante.</p>
+      <p>Asegura tu lugar en nuestra silla. Confirmación rápida vía WhatsApp.</p>
     </div>
     <div class="booking-wrapper">
       <form id="bookingForm">
@@ -406,12 +438,13 @@
         <div class="form-group">
           <label>Servicio Deseado *</label>
           <select name="servicio" required>
-            <option value="">Selecciona un servicio...</option>
-            <option value="Corte Clásico">Corte Clásico & Estilo</option>
-            <option value="Afeitado">Afeitado Tradicional</option>
-            <option value="Barba">Arreglo de Barba</option>
-            <option value="Combo Samuel">Combo Samuel (Corte + Barba)</option>
-            <option value="Otro">Otro / Consulta</option>
+            <option value="">Selecciona un estilo...</option>
+            <option value="Skin Fade">Skin Fade Clásico</option>
+            <option value="Texturizado">Corte Texturizado</option>
+            <option value="Barba">Ritual de Barba</option>
+            <option value="Combo Samuel">The Samuel Combo</option>
+            <option value="Afeitado">Afeitado Old School</option>
+            <option value="Diseño">Diseño & Cejas</option>
           </select>
         </div>
 
@@ -436,13 +469,17 @@
       <h2>Preguntas Frecuentes</h2>
     </div>
     <div style="max-width: 800px; margin: 0 auto;">
-      <details style="background: var(--secondary); margin-bottom: 1rem; padding: 1rem; border-radius: 8px; cursor: pointer;">
-        <summary style="font-weight: 600; color: var(--accent);">¿Necesito cita previa?</summary>
-        <p style="margin-top: 1rem; color: var(--text-muted);">Recomendamos reservar para asegurar tu hora, pero aceptamos walk-ins si hay espacio disponible.</p>
+      <details style="background: var(--secondary); margin-bottom: 1rem; padding: 1.5rem; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05);">
+        <summary style="font-weight: 600; color: var(--accent); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          ¿Necesito cita previa? <i class="fas fa-chevron-down"></i>
+        </summary>
+        <p style="margin-top: 1rem; color: var(--text-muted);">Recomendamos reservar para asegurar tu hora y evitar esperas, especialmente los fines de semana.</p>
       </details>
-      <details style="background: var(--secondary); margin-bottom: 1rem; padding: 1rem; border-radius: 8px; cursor: pointer;">
-        <summary style="font-weight: 600; color: var(--accent);">¿Aceptan tarjetas extranjeras?</summary>
-        <p style="margin-top: 1rem; color: var(--text-muted);">Sí, aceptamos todas las tarjetas internacionales, además de CUP, USD y Transfermóvil.</p>
+      <details style="background: var(--secondary); margin-bottom: 1rem; padding: 1.5rem; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05);">
+        <summary style="font-weight: 600; color: var(--accent); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          ¿Qué métodos de pago aceptan? <i class="fas fa-chevron-down"></i>
+        </summary>
+        <p style="margin-top: 1rem; color: var(--text-muted);">Aceptamos efectivo (CUP/USD), Transfermóvil y EnZona.</p>
       </details>
     </div>
   </section>
@@ -452,12 +489,12 @@
     <div class="footer-grid">
       <div class="footer-col">
         <h3>Samuel Barber</h3>
-        <p>Estilo, tradición y modernidad en el corazón de Camagüey.</p>
+        <p>Estilo, confort y tradición en cada corte.</p>
       </div>
       <div class="footer-col">
         <h3>Contacto</h3>
-        <p>Calle Maximiliano Ramos #424</p>
-        <p>+53 5000 0000</p>
+        <p><i class="fas fa-map-marker-alt"></i> Calle Maximiliano Ramos #424</p>
+        <p><i class="fab fa-whatsapp"></i> +53 5971 5741</p>
       </div>
       <div class="footer-col">
         <h3>Síguenos</h3>
@@ -468,7 +505,7 @@
       </div>
     </div>
     <div class="copyright">
-      © 2026 Samuel Barber. Creado por PedritoTech.
+      © 2026 Samuel Barber. Todos los derechos reservados.
     </div>
   </footer>
 
@@ -497,10 +534,11 @@
       const servicio = data.get('servicio');
       const notas = data.get('notas');
 
-      const mensaje = `🪒 *SOLICITUD DE CITA - SAMUEL BARBER*%0A%0A👤 *Cliente:* ${nombre}%0A📱 *Tel:* ${telefono}%0A📅 *Fecha:* ${fecha}%0A⏰ *Hora:* ${hora}%0A✂️ *Servicio:* ${servicio}%0A📝 *Notas:* ${notas || 'Ninguna'}`;
+      // Mensaje formateado
+      const mensaje = `✂️ *SOLICITUD DE CITA - SAMUEL BARBER*%0A%0A👤 *Cliente:* ${nombre}%0A📱 *Tel:* ${telefono}%0A📅 *Fecha:* ${fecha}%0A⏰ *Hora:* ${hora}%0A💈 *Servicio:* ${servicio}%0A📝 *Notas:* ${notas || 'Ninguna'}`;
       
-      // IMPORTANTE: Cambia este número por el real
-      const numeroWhatsApp = '5350000000'; 
+      // Número actualizado: 59715741 (Prefijo +53 asumido por contexto Cuba)
+      const numeroWhatsApp = '5359715741'; 
       
       window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
     });
