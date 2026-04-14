@@ -3,38 +3,558 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nü House | Reserva tu Experiencia Gastronómica</title>
+  <title>Samuel Barber | Estilo & Confort</title>
+  <!-- Fuentes Premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    :root { --primary: #1a1a1a; --accent: #c5a059; --bg: #f8f9fa; --text: #333; }
+    :root {
+      --primary: #0a0a0a;
+      --secondary: #141414;
+      --accent: #c5a059; /* Dorado */
+      --accent-hover: #d4af37;
+      --text: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --white: #ffffff;
+      --gradient-gold: linear-gradient(135deg, #c5a059 0%, #f4e5c2 50%, #c5a059 100%);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; color: var(--text); background: var(--bg); line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--white); }
     
-    /* Header */
-    header { background: var(--primary); color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+    /* --- HEADER --- */
+    header {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul li a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
     nav ul li a:hover { color: var(--accent); }
-    
-    /* Hero */
-    .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80'); background-size: cover; background-position: center; color: #fff; text-align: center; padding: 6rem 5%; }
-    .btn { display: inline-block; background: var(--accent); color: #fff; padding: 0.8rem 1.5rem; border-radius: 4px; font-weight: bold; margin-top: 1rem; }
-    
-    /* Sections */
-    section { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
-    h1, h2 { text-align: center; margin-bottom: 1rem; }
-    
-    /* Grid */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    
-    /* Cards con optimización de imágenes */
-    .card { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .card img { 
-      width: 100%; 
-      height: 220px; 
-      object-fit: cover; 
-      border-radius: 4px; 
+
+    .mobile-toggle { display: none; color: var(--accent); font-size: 1.5rem; cursor: pointer; }
+
+    /* --- HERO --- */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
       margin-bottom: 1rem;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+
+    .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    .btn-gold {
+      background: var(--gradient-gold);
+      color: var(--primary);
+      padding: 12px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3); }
+
+    /* --- SECCIONES GENERALES --- */
+    section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+    
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header h2 { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+    .section-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+    /* --- GRID CARDS (Cortes) --- */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--secondary);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+    /* Optimización de Imágenes */
+    .card-img-wrap {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+      background: #1a1a1a;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      opacity: 0; /* Oculto hasta cargar */
+      animation: fadeIn 0.5s forwards;
+    }
+    .card-img-wrap img.loaded { opacity: 1; }
+    .card-img-wrap img.error {
+      opacity: 0.3;
+      filter: grayscale(100%);
+    }
+    /* Icono de respaldo si falla la imagen */
+    .card-img-wrap::after {
+      content: '\f0c4'; /* FontAwesome icon */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: var(--accent);
+      z-index: 0;
+    }
+    .card-img-wrap img { position: relative; z-index: 1; }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-title { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--white); }
+    .card-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; flex-grow: 1; }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1rem;
+    }
+    .card-price { color: var(--accent); font-weight: 700; font-size: 1.2rem; font-family: 'Playfair Display', serif; }
+
+    /* --- CONFORT & ATENCION (Features) --- */
+    .feature-box {
+      text-align: center;
+      padding: 2.5rem;
+      background: var(--secondary);
+      border-radius: 12px;
+      border: 1px solid rgba(197, 160, 89, 0.1);
+      transition: all 0.3s ease;
+    }
+    .feature-box:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+    .feature-icon { font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; }
+    .feature-box h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+    .feature-box p { color: var(--text-muted); }
+
+    /* --- INFO Y PAGOS --- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .info-card {
+      background: var(--secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(197, 160, 89, 0.1);
+      text-align: center;
+    }
+    .info-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+    .info-card h3 { margin-bottom: 1rem; color: var(--white); }
+    .info-card p { color: var(--text-muted); }
+    .payment-logos { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+    .payment-tag { 
+      background: rgba(197, 160, 89, 0.1); 
+      color: var(--accent); 
+      padding: 0.5rem 1rem; 
+      border-radius: 20px; 
+      font-weight: 600; 
+      border: 1px solid var(--accent);
+    }
+
+    /* --- FORMULARIO --- */
+    .booking-wrapper {
+      background: var(--secondary);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-group { margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    
+    label { display: block; margin-bottom: 0.5rem; color: var(--accent); font-size: 0.9rem; }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: var(--white);
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.1);
+    }
+
+    button.submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient-gold);
+      border: none;
+      border-radius: 6px;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: opacity 0.3s;
+    }
+    button.submit-btn:hover { opacity: 0.9; }
+
+    /* --- FOOTER --- */
+    footer {
+      background: var(--secondary);
+      padding: 4rem 5% 2rem;
+      border-top: 3px solid var(--accent);
+      margin-top: 4rem;
+      text-align: center;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      text-align: left;
+    }
+    .footer-col h3 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
+    .footer-col p, .footer-col a { color: var(--text-muted); display: block; margin-bottom: 0.8rem; text-decoration: none; }
+    .socials a { display: inline-block; margin-right: 15px; font-size: 1.2rem; color: var(--white); }
+    .copyright { color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .mobile-toggle { display: block; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--secondary);
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      }
+      nav ul.active { display: flex; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo"><i class="fas fa-cut"></i> SAMUEL BARBER</a>
+    <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="#experiencia">El Espacio</a></li>
+        <li><a href="#servicios">Cortes</a></li>
+        <li><a href="#pagos">Pagos</a></li>
+        <li><a href="#reservar">Reservar</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Donde cada detalle define tu estilo</h1>
+      <p>Cortes de precisión, ambiente relajado y un servicio que te hace sentir en casa.</p>
+      <a href="#reservar" class="btn-gold">Reservar Ahora</a>
+    </div>
+  </section>
+
+  <!-- Experiencia: Confort y Atención -->
+  <section id="experiencia">
+    <div class="section-header">
+      <h2>Más que un Corte, una Experiencia</h2>
+      <p>En Samuel Barber, nos enfocamos en dos pilares fundamentales: tu comodidad y nuestra dedicación.</p>
+    </div>
+    <div class="grid-container">
+      <div class="feature-box">
+        <i class="fas fa-couch feature-icon"></i>
+        <h3>Confort Absoluto</h3>
+        <p>Disfruta de nuestros sillones reclinables de cuero, aire acondicionado climatizado, música ambiente seleccionada y bebidas de cortesía. Un espacio donde el tiempo se detiene.</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-user-tie feature-icon"></i>
+        <h3>Atención Excepcional</h3>
+        <p>Nuestros barberos no solo cortan cabello; escuchan, asesoran y cuidan cada detalle. Nos tomamos el tiempo necesario para asegurar que salgas sintiéndote renovado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios: 6 Tipos de Cortes -->
+  <section id="servicios">
+    <div class="section-header">
+      <h2>Nuestros Estilos</h2>
+      <p>Domina las tendencias con nuestros 6 servicios signature.</p>
+    </div>
+    <div class="grid-container">
+      
+      <!-- Corte 1 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Fade Clásico" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Skin Fade Clásico</h3>
+          <p class="card-desc">Degradado perfecto desde cero, transiciones impecables y acabado a navaja.</p>
+          <div class="card-footer">
+            <span class="card-price">10 USD</span>
+            <i class="fas fa-star" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corte 2 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Texturizado" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Corte Texturizado</h3>
+          <p class="card-desc">Estilo moderno con tijera, movimiento natural y productos mate para el finish.</p>
+          <div class="card-footer">
+            <span class="card-price">12 USD</span>
+            <i class="fas fa-cut" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corte 3 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Barba Completa" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Ritual de Barba</h3>
+          <p class="card-desc">Perfilado, recorte, toalla caliente, aceites esenciales y masaje facial.</p>
+          <div class="card-footer">
+            <span class="card-price">8 USD</span>
+            <i class="fas fa-beard" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corte 4 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1593702295094-aea8c5c13d7b?w=600&q=80" alt="Combo Completo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">The Samuel Combo</h3>
+          <p class="card-desc">La experiencia completa: Corte de cabello + Arreglo de barba + Bebida.</p>
+          <div class="card-footer">
+            <span class="card-price">18 USD</span>
+            <i class="fas fa-crown" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corte 5 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Afeitado Tradicional" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Afeitado Old School</h3>
+          <p class="card-desc">Afeitado tradicional a navaja con espuma caliente y aftershave premium.</p>
+          <div class="card-footer">
+            <span class="card-price">10 USD</span>
+            <i class="fas fa-soap" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corte 6 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=600&q=80" alt="Diseño y Cejas" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Diseño & Cejas</h3>
+          <p class="card-desc">Limpieza de cejas con hilo/cera, diseño de líneas laterales y ribete preciso.</p>
+          <div class="card-footer">
+            <span class="card-price">5 USD</span>
+            <i class="fas fa-magic" style="color:var(--accent)"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pagos y Horarios -->
+  <section id="pagos" style="background: var(--secondary); border-radius: 20px; margin: 5rem auto;">
+    <div class="section-header">
+      <h2>Información & Pagos</h2>
+      <p>Facilidades para que tu visita sea perfecta.</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card">
+        <i class="fas fa-clock info-icon"></i>
+        <h3>Horario de Atención</h3>
+        <p><strong>Lunes a Viernes:</strong><br>9:00 AM - 4:00 PM</p>
+        <p style="margin-top:1rem; font-size:0.9rem; color:var(--accent);"><strong>Sábado y Domingo:</strong> Cerrado</p>
+      </div>
+      
+      <div class="info-card">
+        <i class="fas fa-wallet info-icon"></i>
+        <h3>Métodos de Pago</h3>
+        <p>Paga cómodamente desde tu móvil o en efectivo.</p>
+        <div class="payment-logos">
+          <span class="payment-tag"><i class="fas fa-money-bill-wave"></i> Efectivo</span>
+          <span class="payment-tag"><i class="fas fa-mobile-alt"></i> ENZONA</span>
+          <span class="payment-tag"><i class="fas fa-exchange-alt"></i> Transfermóvil</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservas -->
+  <section id="reservar">
+    <div class="section-header">
+      <h2>Reserva tu Cita</h2>
+      <p>Asegura tu lugar en nuestra silla. Confirmación rápida vía WhatsApp.</p>
+    </div>
+    <div class="booking-wrapper">
+      <form id="bookingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre Completo *</label>
+            <input type="text" name="nombre" required placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label>Teléfono *</label>
+            <input type="tel" name="telefono" required placeholder="+53 5xxx xxxx">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Fecha *</label>
+            <input type="date" name="fecha" required>
+          </div>
+          <div class="form-group">
+            <label>Hora Preferida *</label>
+            <select name="hora" required>
+              <option value="">Selecciona...</option>
+              <option value="09:00">09:00 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="13:00">01:00 PM</option>
+              <option value="14:00">02:00 PM</option>
+              <option value="15:00">03:00 PM</option>
+              <option value="16:00">04:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Servicio Deseado *</label>
+          <select name="servicio" required>
+            <option value="">Selecciona un estilo...</option>
+            <option value="Skin Fade">Skin Fade Clásico</option>
+            <option value="Texturizado">Corte Texturizado</option>
+            <option value="Barba">Ritual de Barba</option>
+            <option value="Combo Samuel">The Samuel Combo</option>
+            <option value="Afeitado">Afeitado Old School</option>
+            <option value="Diseño">Diseño & Cejas</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Notas Adicionales</label>
+          <textarea name="notas" rows="3" placeholder="¿Alguna preferencia especial?"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fab fa-whatsapp"></i> Enviar Solicitud
+        </button>
+        <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; col      margin-bottom: 1rem;
       background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
       background-size: 200% 100%;
       animation: loading 1.5s infinite;
